@@ -1,44 +1,32 @@
 # NDI-Discovery-LXC
-Script to commission an NDI discovery Server inside an LXC container.
 
-/!\ I am not a programmer /!\
-I learned myself here and there and might be better way to do stuff. 
-Plus my english is not perfect !
+Script to create an NDI Discovery Server inside an LXC container.
 
-I wrote this script to deploy quickly inside an LXC containe Debian 11 on a Proxmox server.
+## Installation Instructions
+Create an Debian 11 Container on Proxmox with 4gb of disk space, 1 cpu core and 256mb or ram and then run this code
+```
+wget https://raw.githubusercontent.com/smokeyx/NDI-Discovery-LXC/main/NDI-Discovery-Server-Install.sh
+chmox +x NDI-Discovery-Server-Install.sh
+./NDI-Discovery-Server-Install.sh`
+```
 
-The way to use once your LXC is created you don't need to update anything this script does everythings. 
-What does it do. 
+## Below are notes on my version
 
-Update and upgrade the Debian installation. 
-Install Apache2, Iperf3, and latest NDI5 Discovery Server via the SDK.
-Create services to autorun after boot the mentionned pieces.
-That's it. 
+This script is a fork of @jomixlaf's original available at https://github.com/jomixlaf/NDI-Discovery-LXC 
 
-Because I live in Montreal I Commented with # the script so you can set your own Timezone.
+Running this script downloads and installs the discovery server, apache2 web server as well as all needed dependencies.  It goes a bit beyond @jomixlaf's original by adding some additional functionality...
 
-Tested on Debian with NDI 5.6
+-It takes the original ndi-discovery-log.txt file which has new entries at the end of the file and flips it upside down with cat and puts the newest entries on top making it easier to monitor.
 
-1 step
-type in the terminal --> wget https://raw.githubusercontent.com/jomixlaf/NDI-Discovery-LXC/main/NDI-Discovery-Server-Install.sh
-then ---> chmod +x
-then wait... Then you must read the EULA incorporated in the NDI SDK we just download within the script. 
+-I also added an index.html file that...
+	- pulls in the newly reversed text file and applies a bit of formatting like a black background (because I'm not a psychopath who likes to look at a white screen) 
+	- refreshes every 5 seconds so you see all new server entries
+	- adds a button to pause the automatic refresh
 
-Then that's it ! 
+-Unlike @jomixlaf's script that restarts the server every night at midnight, mine keeps the server running indefinitely. I'm using this on a tour that frequently plays past midnight and loosing our server in the middle of a show would be very problematic.
 
+-The server does create a backup of the day's log and truncates the log file on the web server every night at midnight though to keep the file size manageable and easy to scroll back.
 
-The output of the functinnal discovery server can be seen thru your web browser with his IP address /ndi-discovery-log.txt
-if you run this machine for ever like I do every 00:00 it restart the NDI Discovery Service and create a new ndi-discovery-log.txt
-The previous data can be seen in the folder located here /var/www/html/ndi-discovery-log-all/ 
-This is very usefull when troubleshooting NDI Connections. now the time seen in the log will always correspond to real time data.
-
-<img width="606" alt="image" src="https://github.com/jomixlaf/NDI-Discovery-LXC/assets/100269973/53b2a138-872a-4c43-b462-6d84ff11dc25">
-
-![image](https://github.com/jomixlaf/NDI-Discovery-LXC/assets/100269973/8a24080c-4443-4ca0-ba0e-88da9a9c836e)
+# This works well on Debian 11 on Proxmox 
 
 
-
-
-I hope you have with this like I do as I said, not a programmer at all I learded everything by myselft thanks the internet ! 
-
-I may update or add feature in the future as well will see. Give me a hint if something is not working or need more info. Thanks for reading. 
