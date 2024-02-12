@@ -35,7 +35,7 @@ echo Update and Upgrade Debian, then install apache2 and curl
 
 sleep 1
 
-echo "Set Toronto timezone" 
+echo "Set America Central timezone" 
   timedatectl set-timezone America/Chicago  # Set local time
 
 echo "empty /etc/motd and adjust /etc/issue"
@@ -46,8 +46,6 @@ Debian GNU/Linux 11 \n \4 \l
 
 ################################
 ##### NDI Discovery Server #####
-################################
-########### JomixLaf ###########
 ################################
 
 EOD
