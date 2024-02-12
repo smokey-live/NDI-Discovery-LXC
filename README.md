@@ -7,7 +7,7 @@ Create an Debian 11 Container on Proxmox with 4gb of disk space, 1 cpu core and 
 ```
 wget https://raw.githubusercontent.com/smokeyx/NDI-Discovery-LXC/main/NDI-Discovery-Server-Install.sh
 chmod +x NDI-Discovery-Server-Install.sh
-./NDI-Discovery-Server-Install.sh`
+./NDI-Discovery-Server-Install.sh
 ```
 
 ## Below are notes on my version
