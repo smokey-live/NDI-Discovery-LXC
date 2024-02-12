@@ -35,8 +35,8 @@ echo Update and Upgrade Debian, then install apache2 and curl
 
 sleep 1
 
-#echo "Set Toronto timezone" 
-  #timedatectl set-timezone America/Toronto  # Set local time
+echo "Set Toronto timezone" 
+  timedatectl set-timezone America/Chicago  # Set local time
 
 echo "empty /etc/motd and adjust /etc/issue"
   rm /etc/motd && touch /etc/motd           # delete original file and create an empty one
@@ -193,21 +193,19 @@ cat > /var/www/html/index.html << "EOI"
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>NDI Discovery Server Live Log</title>
+    <title>NDI Discovery Server</title>
     <style>
         body {
             background-color: black;
             color: red;
-            font-size: 14px;
-      font-family: courier, monospace;
+            font-family: monospace;
             text-align: center;
         }
 
         h1 {
             font-size: 24px;
-            font-family: arial black, sans-serif;
-      margin-bottom: 10px;
-            color: white
+            margin-bottom: 10px;
+            color: lime
         }
     </style>
 </head>
