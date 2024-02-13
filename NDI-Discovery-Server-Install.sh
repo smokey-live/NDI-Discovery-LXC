@@ -242,7 +242,7 @@ cat > /var/www/html/index.html << "EOI"
 EOI
 
 # Create a symbolic link to the apache html directory because I'm lazy and don't want to keep typing the whole path
-ln -s /var/www/html /root/wwww
+ln -s /var/www/html/ /root/wwww
 
 # change the default editor for crontab to nano because fuck vi
 export VISUAL=nano
