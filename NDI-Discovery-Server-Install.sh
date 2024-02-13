@@ -59,7 +59,7 @@ rm       /var/www/html/ndi-discovery-log.txt
 touch    /var/www/html/ndi-discovery-log.txt
 mkdir -p /var/www/html/archive
 echo " " >> /var/www/html/ndi-discovery-log.txt
-clear
+
 echo
 echo
 /root/ndi-discovery-server | tee -a /var/www/html/ndi-discovery-log.txt
@@ -67,7 +67,7 @@ echo
 EOF
 
 # Time to create Service
-clear
+
 IS_ACTIVE=$(systemctl is-active $ndi-discovery-server.service)
 if [ "$IS_ACTIVE" == "active" ]; then
 echo "Service is running"
@@ -77,6 +77,7 @@ echo "Service restarted"
 
 else
 # create service for the NDI Discovery Server
+
 echo "Creating NDI Discovery Service"
 cat > /etc/systemd/system/ndi-discovery-server.service << "EOT"
 [Unit]
@@ -95,8 +96,6 @@ WantedBy=multi-user.target
 EOT
 
 fi
-
-clear
 
 # Create script to read log file and reverse it so that new lines appear on top so you don't have to keep scrolling to the bottom to see new data
 echo "Creating log file reverse script"
@@ -157,11 +156,11 @@ chmod +x /root/ndi-discovery-server-log-archive.sh
 
  { crontab -l; echo '1 0 * * * /root/ndi-discovery-server-log-archive.sh'; } | crontab -
 
-#Delete the default apache index.html file 
+# Delete the default apache index.html file 
 
 rm /var/www/html/index.html
 
-#create index.html file that loads the reversed log file, does some formatting, sets it to refresh every 5 seconds and adds a button to pause refrheses.
+# Create index.html file that loads the reversed log file, does some formatting, sets it to refresh every 5 seconds and adds a button to pause refrheses.
 
 cat > /var/www/html/index.html << "EOI"
 <!DOCTYPE html>
@@ -242,7 +241,11 @@ cat > /var/www/html/index.html << "EOI"
 </html>
 EOI
 
-clear
+# Create a symbolic link to the apache html directory because I'm lazy and don't want to keep typing the whole path
+ln -s /var/www/html /root/wwww
+
+# change the default editor for crontab to nano because fuck vi
+export VISUAL=nano
 
 sleep 1
 
