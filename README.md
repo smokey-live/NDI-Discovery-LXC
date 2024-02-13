@@ -10,11 +10,11 @@ chmod +x NDI-Discovery-Server-Install.sh
 ./NDI-Discovery-Server-Install.sh
 ```
 
-## Below are notes on my version
+## About this script
 
 This script is a fork of @jomixlaf's original available at https://github.com/jomixlaf/NDI-Discovery-LXC 
 
-Running this script downloads and installs the discovery server, apache2 web server as well as all needed dependencies.  It goes a bit beyond @jomixlaf's original by adding some additional functionality...
+Running this script downloads and installs the discovery server, apache2 web server as well as all needed dependencies.  It goes a bit beyond @jomixlaf's version by adding some additional functionality...
 
 - It takes the original ndi-discovery-log.txt file which has new entries at the end of the file and flips it upside down with cat and puts the newest entries on top making it easier to monitor.
 
