@@ -3,7 +3,7 @@
 Script to create an NDI Discovery Server inside an LXC container.
 
 ## Installation Instructions
-Create an Debian 11 Container on Proxmox with 4gb of disk space, 1 cpu core and 256mb or ram and then run these commands from a CLI. (Note: This may work in other environments but I haven't tested it so proceed at your own risk.)
+Create an Debian 11 Container on Proxmox with 2gb of disk space, 1 cpu core and 256mb or ram and then run these commands from a CLI. (Note: This may work in other environments but I haven't tested it so proceed at your own risk.)
 ```
 wget https://raw.githubusercontent.com/smokeyx/NDI-Discovery-LXC/main/NDI-Discovery-Server-Install.sh
 chmod +x NDI-Discovery-Server-Install.sh
