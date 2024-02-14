@@ -10,6 +10,8 @@ chmod +x NDI-Discovery-Server-Install.sh
 ./NDI-Discovery-Server-Install.sh
 ```
 
+Once the script is done, just point your web browswer to the IP address of the container and you'll see the log automatically.  You can also go to http://<IP-Addr>/archive to view the last 7 days of logs
+
 ## About this script
 
 This script is a fork of @jomixlaf's original available at https://github.com/jomixlaf/NDI-Discovery-LXC 
